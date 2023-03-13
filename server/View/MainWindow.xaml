@@ -1,0 +1,64 @@
+﻿<Window x:Class="server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:server"
+        mc:Ignorable="d"
+        Title="Server" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <!--proportion 2:1 -->
+            <ColumnDefinition Width ="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="CadetBlue" Margin="20">
+            <StackPanel>
+                <TextBox Name="txtMessage" Text="{Binding MsgBox}" Height="250" Width="470" Margin="10" Background="White"/>
+                <WrapPanel>
+                    <TextBox Name="txtString" Text="{Binding Str}" Height="80" Width="380" HorizontalAlignment="Left" Margin="10"/>
+                    <Button Name="btnSend" Command="{Binding SendCommand}" Content="Send" Height="80" Width="80"  />
+                </WrapPanel>
+                    
+            </StackPanel> 
+        </Grid>
+
+        <Grid Grid.Column="1" Background="Beige" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="5" Background="Beige">
+                <StackPanel>
+                    <WrapPanel>
+                        <Label Name="LabelIP" Content="IP" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox Name="txtIP" Text="{Binding Ip, UpdateSourceTrigger=PropertyChanged}" Margin="20 10 0 0"  Height="20" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Name="LabelPort" Content="Port" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox Name="txtPort" Text="{Binding Port, UpdateSourceTrigger=PropertyChanged}" Margin="8 0 0 0"   Height="20" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Button Name="btnStart" Command="{Binding ConnectCommand}" Content="Start" Width="60" Height="30" HorizontalAlignment="Center" Margin="20 20 20 5"/>
+                        <Button Name="btnStop" Command="{Binding DisconnectCommand}" Content="Stop" Width="60" Height="30" HorizontalAlignment="Center" Margin="30 20 20 5"/>
+                    </WrapPanel>
+                </StackPanel>
+                    
+                     
+            </Grid>
+
+            <Grid Grid.Row="1" Background="Beige">
+                <Label Content="Client List Name:" FontWeight="Bold" />
+                <ListBox Height="200" Width="200" Margin="5 30" VerticalAlignment="Top">
+                    <ListBoxItem> ID A</ListBoxItem>
+                    <ListBoxItem> ID B</ListBoxItem>
+                    <ListBoxItem> ID C</ListBoxItem>
+                </ListBox>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
